@@ -63,14 +63,24 @@ public class LocatorsConcept {
 
 
         // process 6 (By locator and create a common utility class) -> ElementUtil.java
-        By emailBy = By.id("input-email");
-        By passBy = By.id("input-password");
+        // By emailBy = By.id("input-email");
+        // By passBy = By.id("input-password");
+
+        // ElementUtil elementUtil = new ElementUtil(driver);
+        // elementUtil.doSenKeys(emailBy, "test@gmai.com");
+        // elementUtil.doSenKeys(passBy, "test123");
+
+        // process 7 ->String locator
+        String emailString = "input-email";
+        String passString = "input-password";
 
         ElementUtil elementUtil = new ElementUtil(driver);
-        elementUtil.doSenKeys(emailBy, "test@gmai.com");
-        elementUtil.doSenKeys(passBy, "test123");
+        elementUtil.doSenKeys("id", emailString, "test@gmai.com");
+        elementUtil.doSenKeys("id", passString, "test123");
 
-        driver.quit();
+
+
+        // driver.quit();
     }
 
     //created for process 4
