@@ -67,4 +67,8 @@ public class ElementUtil {
     public String doGetElementText(By locator){
         return getElement(locator).getText();
     }
+
+    public String doElementGetAttribute(By locator, String attribute){
+        return getElement(locator).getAttribute(attribute);
+    }
 }
