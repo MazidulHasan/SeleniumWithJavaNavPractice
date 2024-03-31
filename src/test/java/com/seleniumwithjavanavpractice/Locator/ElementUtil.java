@@ -1,5 +1,8 @@
 package com.seleniumwithjavanavpractice.Locator;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -70,5 +73,39 @@ public class ElementUtil {
 
     public String doElementGetAttribute(By locator, String attribute){
         return getElement(locator).getAttribute(attribute);
+    }
+
+    public List<WebElement> getElements(By locator){
+        return driver.findElements(locator);
+    }
+
+    public int getElementsCount(By locator){
+        return getElements(locator).size();
+    }
+
+    public ArrayList<String> getElementsTextList(By locator){
+        List<WebElement> elelist = getElements(locator);
+        ArrayList<String> eleTextlist = new ArrayList<String>();
+
+        for (WebElement e : elelist) {
+            String text = e.getText();
+            if (text.length()!=0) {
+                eleTextlist.add(text);
+            }
+        }
+        return eleTextlist;
+    }
+
+    public ArrayList<String> getElementAttributeList(By locator, String attributeValue){
+        List<WebElement> elelist = getElements(locator);
+        ArrayList<String> eleAttlist = new ArrayList<String>();
+
+        for (WebElement e : elelist) {
+            String text = e.getAttribute(attributeValue);
+            if (text.length()!=0) {
+                eleAttlist.add(text);
+            }
+        }
+        return eleAttlist;
     }
 }
