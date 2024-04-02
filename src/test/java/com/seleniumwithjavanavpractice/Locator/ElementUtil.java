@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -53,7 +54,15 @@ public class ElementUtil {
 
     //this is for by locators
     public WebElement getElement(By locator){
-        return driver.findElement(locator);
+        WebElement element = null;
+        try {
+            element = driver.findElement(locator);
+        } catch (NoSuchElementException e) {
+            System.out.println("Element is not present on the page");
+            e.printStackTrace();
+            return null;
+        }
+        return element;
     }
 
     //this is for by locators
@@ -73,6 +82,24 @@ public class ElementUtil {
 
     public String doElementGetAttribute(By locator, String attribute){
         return getElement(locator).getAttribute(attribute);
+    }
+
+    public boolean isElementDisplayed(By locator){
+        return getElement(locator).isDisplayed();
+    }
+
+    public boolean isElementExist(By locator){
+        if (getElements(locator).size()==1) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean multipleElementExist(By locator){
+        if (getElements(locator).size()>=0) {
+            return true;
+        }
+        return false;
     }
 
     public List<WebElement> getElements(By locator){
