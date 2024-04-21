@@ -135,4 +135,22 @@ public class ElementUtil {
         }
         return eleAttlist;
     }
+
+    public void doSearch(By searchlocator,By searchSuggestion, String searchKey, String value) throws InterruptedException{
+        doSenKeys(searchlocator, searchKey);
+
+        Thread.sleep(3000);
+
+        List<WebElement> suggList = getElements(searchSuggestion);
+        System.out.println("Total size is::"+suggList.size());
+
+        for (WebElement webElement : suggList) {
+           String text = webElement.getText();
+           System.out.println(text);
+           if (text.contains(value)) {
+               webElement.click();
+               break;
+           }
+        }
+    }
 }

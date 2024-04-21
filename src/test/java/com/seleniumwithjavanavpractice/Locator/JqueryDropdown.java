@@ -1,5 +1,7 @@
 package com.seleniumwithjavanavpractice.Locator;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,6 +22,9 @@ public class JqueryDropdown {
             select.selectByVisibleText("American flamingo");
             select.selectByVisibleText("Chilean flamingo");
          }
+         select.deselectByVisibleText("Chilean flamingo");
+
+         List<WebElement> allSelectedOptions = select.getAllSelectedOptions();
 
          driver.quit();
     }
