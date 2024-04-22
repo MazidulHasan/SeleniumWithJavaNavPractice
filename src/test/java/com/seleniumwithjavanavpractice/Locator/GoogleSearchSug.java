@@ -10,7 +10,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class GoogleSearchSug {
     static WebDriver driver;
     public static void main(String[] args) throws InterruptedException {
-        WebDriver driver = new ChromeDriver();
+        driver = new ChromeDriver();
          driver.get("https://www.google.com/"); 
 
          By searchField = By.name("q");
