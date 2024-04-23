@@ -42,5 +42,19 @@ public class CustomXpath {
         //tagname[starts-with(@att,'value')]
         //input[starts-with(@placeholder,'E-Mail')]
 
+        // 9.Starts-with() with text()
+        //tagname[starts-with(text(),'value')]
+
+        //11. index based xpath
+        // (//a[text()='Forgotten Pass'])[1]
+        // here we have made a group with () for the first part and after that we have selected the first data with [1]
+        // the grouping is called captured group
+        // also another alternative is available for the same thing
+        // (//a[text()='Forgotten Pass'])[position()=4]
+        // or
+        // (//a[text()='Forgotten Pass'])[last()-1]
+        // ((//div[@class='aksldjfhlsd'])[last()]//a)[last()]
+
+        
     }
 }
