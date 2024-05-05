@@ -55,6 +55,7 @@ public class CustomXpath {
         // (//a[text()='Forgotten Pass'])[last()-1]
         // ((//div[@class='aksldjfhlsd'])[last()]//a)[last()]
 
-        
+        // 12. Without any tag
+        // //input[@class='form-control']
     }
 }
