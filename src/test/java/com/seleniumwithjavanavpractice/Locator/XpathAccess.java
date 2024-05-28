@@ -23,5 +23,7 @@ public class XpathAccess {
         //a[text()='Dummy Data']/following-sibling::a[text()='Returns']
 
         //a[text()='Dummy Text']//ancestor::tr/td/input[@type='checkbox']
+
+        //span[text()='Robine Rijke']/ancestor::td/following-sibling::td[2]
     }
 }
