@@ -41,3 +41,8 @@ public class WebTableTest {
         
     }
 }
+
+
+// if there are multiple valuie inside a classname then if we want to use this class name 
+// then we can use only a sigle value out of many
+// if we want to use xpath then we can use single or multiple classes at once
