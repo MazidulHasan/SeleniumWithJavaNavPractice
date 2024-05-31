@@ -57,5 +57,14 @@ public class CustomXpath {
 
         // 12. Without any tag
         // //input[@class='form-control']
+
+        // odd and even in xpath
+        // (//select[@id='from_getForm']/option) [position() mod 2 = 1] --> gives all the odd position value of a table
+        // (//select[@id='from_getForm']/option) [position() mod 2 = 0] --> gives all the even position value of a table
+
+        //if we want to match with a text having space in the text then need to use this
+        // label[normalize-space()='Yes']
+        // here the actual text were ' Yes' that why it was not capturing with text()
+        
     }
 }
