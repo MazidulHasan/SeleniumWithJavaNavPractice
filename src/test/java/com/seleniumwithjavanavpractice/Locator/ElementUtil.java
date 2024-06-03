@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 public class ElementUtil {
     private WebDriver driver;         //private so that no one can access this and using it will get null pointer exception, so to prevent it we declare it as private
@@ -152,5 +153,28 @@ public class ElementUtil {
                break;
            }
         }
+    }
+
+    // Action Utils
+    public void handelMenuSubMenuLevel4(By menuButton, By level1, By level2, By level3) throws InterruptedException{
+        doClick(menuButton);
+        Thread.sleep(1500);
+        
+        Actions act = new Actions(driver);
+        act.moveToElement(getElement(level1)).perform();
+        Thread.sleep(1500);
+        act.moveToElement(getElement(level2)).perform();
+        Thread.sleep(1500);
+        doClick(level3);
+    }
+
+    public void doActionsClick(By locator){
+        Actions act = new Actions(driver);
+        act.click(getElement(locator)).perform();
+    }
+
+    public void doActionsSendKeys(By locator, String value){
+        Actions act = new Actions(driver);
+        act.sendKeys(getElement(locator),value).perform();
     }
 }
