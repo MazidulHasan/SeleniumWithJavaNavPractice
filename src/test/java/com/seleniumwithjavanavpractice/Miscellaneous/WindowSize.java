@@ -16,7 +16,5 @@ public class WindowSize {
 
         driver.get("https://signaturegenerator.com/draw");
         
-        Thread.sleep(5000);
-        driver.quit();
     }
 }
