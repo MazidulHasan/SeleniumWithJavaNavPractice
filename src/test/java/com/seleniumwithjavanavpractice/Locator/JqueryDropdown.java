@@ -1,6 +1,6 @@
 package com.seleniumwithjavanavpractice.Locator;
 
-import java.util.List;
+// import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -24,7 +24,7 @@ public class JqueryDropdown {
          }
          select.deselectByVisibleText("Chilean flamingo");
 
-         List<WebElement> allSelectedOptions = select.getAllSelectedOptions();
+        //  List<WebElement> allSelectedOptions = select.getAllSelectedOptions();
 
          driver.quit();
     }
