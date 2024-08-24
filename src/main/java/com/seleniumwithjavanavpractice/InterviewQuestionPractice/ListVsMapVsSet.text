@@ -1,0 +1,31 @@
+List: (index-based methods to insert, update, delete, and search the elements)
+    > can have duplicate elements
+    > maintains insertion order
+    > can store null elements
+    > ex: Array List, LinkedList
+    > If you need to access the elements frequently by using the index then we can use the list
+
+
+Set:
+    > Duplicate item will be ignored
+    > do not maintain any insertion order
+    > only one null value
+    > HashSet, LinkedHashSet, and TreeSet
+    > If you want to create a collection of unique elements then we can use set
+
+Map:
+    > does not allow duplicate elements
+    > does not maintain any insertion order
+    > allows a single null key at most and any number of null values
+    > HashMap, HashTable, TreeMap, ConcurrentHashMap, and LinkedHashMap
+    > If you want to store the data in the form of key/value pair then we can use the map :: (fast retrieval, insertion, and deletion)
+
+HashMap: (Key-Value Pair Storage)
+    > No Duplicate Keys
+    > Allows Null
+    > Unordered
+    > Resizable
+    > Use HashMap when you need to frequently access, update, or delete elements based on a key.
+
+LinkedHashMap: (ordering)
+TreeMap: (sorted keys)
