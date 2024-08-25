@@ -10,6 +10,7 @@ public class ImplicitlyWaitConcept {
     public static void main(String[] args) {
         WebDriver driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10)); // sel 4.x
+        
         // implecitly wait :: Global wait: Applied to all the elements by default
         // it will wait for an elemet 10s max for an element
         // if the element is found before 10 sec then it will take action and go to the
@@ -28,6 +29,14 @@ public class ImplicitlyWaitConcept {
 
         // case study 2
         // login page : 10s time out
+
+
+        // case 3
+        // its only for webelement
+        // not applicable for non web element: alerts, title, urls, browser window
+
+        // need to avoid implicit wait in your framework
+
 
         driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
         driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/div[2]/form/div[1]/div/div[2]/input")).sendKeys("Test");
