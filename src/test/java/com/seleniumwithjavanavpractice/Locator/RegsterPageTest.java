@@ -26,12 +26,12 @@ public class RegsterPageTest {
         By successMsg = By.tagName("h1");
 
         ElementUtil elementUtil = new ElementUtil(driver);
-        elementUtil.doSenKeys(fname, "test01F");
-        elementUtil.doSenKeys(lname, "test01L");
-        elementUtil.doSenKeys(email, getRandomEamil());
-        elementUtil.doSenKeys(telephpone, "37378237287");
-        elementUtil.doSenKeys(password, "test01");
-        elementUtil.doSenKeys(confPass, "test01");
+        elementUtil.doSendKeys(fname, "test01F");
+        elementUtil.doSendKeys(lname, "test01L");
+        elementUtil.doSendKeys(email, getRandomEamil());
+        elementUtil.doSendKeys(telephpone, "37378237287");
+        elementUtil.doSendKeys(password, "test01");
+        elementUtil.doSendKeys(confPass, "test01");
         elementUtil.doClick(isSubscribeYes);
         elementUtil.doClick(policyCheckBox);
         elementUtil.doClick(continueButton);

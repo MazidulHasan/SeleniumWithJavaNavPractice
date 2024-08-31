@@ -1,13 +1,17 @@
 package com.seleniumwithjavanavpractice.Locator;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ElementUtil {
     private WebDriver driver;         //private so that no one can access this and using it will get null pointer exception, so to prevent it we declare it as private
@@ -67,13 +71,21 @@ public class ElementUtil {
     }
 
     //this is for by locators
-    public void doSenKeys(By locator, String value){
+    public void doSendKeys(By locator, String value){
         getElement(locator).sendKeys(value);
+    }
+
+    public void doSendKeys(By locator, String value, int timeOut){
+        waitForElemetnVisible(locator, timeOut).sendKeys(value);;
     }
 
     //this is for by locators
     public void doClick(By locator){
         getElement(locator).click();
+    }
+
+    public void doClick(By locator, int timeOut){
+        waitForElemetnVisible(locator, timeOut).click();
     }
 
     //this is for by locators
@@ -138,7 +150,7 @@ public class ElementUtil {
     }
 
     public void doSearch(By searchlocator,By searchSuggestion, String searchKey, String value) throws InterruptedException{
-        doSenKeys(searchlocator, searchKey);
+        doSendKeys(searchlocator, searchKey);
 
         Thread.sleep(3000);
 
@@ -176,5 +188,107 @@ public class ElementUtil {
     public void doActionsSendKeys(By locator, String value){
         Actions act = new Actions(driver);
         act.sendKeys(getElement(locator),value).perform();
+    }
+
+
+
+    // Wait utils
+    public void clickWhenReady(By locator, int timeOut){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
+        wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
+    }
+    
+    public List<WebElement> waitForElementsPresence(By locator, int timeOut){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
+        return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
+    }
+
+    public List<WebElement> waitForElementsVisibility(By locator, int timeOut){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
+        return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
+    }
+
+    public WebElement waitForElemetPresence(By locator, int timeOut){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
+        return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+    }
+
+    public WebElement waitForElemetnVisible(By locator, int timeOut){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+
+    public String waitForTitleContains(String titleFractionValue, int timeOut){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
+        try {
+            if(wait.until(ExpectedConditions.titleContains(titleFractionValue))){
+                return driver.getTitle();
+            }    
+        } catch (Exception e) {
+            System.out.println("Title is not found within the timeout");
+        }
+        return null;
+    }
+
+    public String waitForTitleIs(String title, int timeOut){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
+        try {
+            if(wait.until(ExpectedConditions.titleIs(title))){
+                return driver.getTitle();
+            }    
+        } catch (Exception e) {
+            System.out.println("Title is not found within the timeout");
+        }
+        return null;
+    }
+
+    public String waitForURLContains(String urlFractionValue, int timeOut){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
+        try {
+            if(wait.until(ExpectedConditions.urlContains(urlFractionValue))){
+                return driver.getCurrentUrl();
+            }    
+        } catch (Exception e) {
+            System.out.println("URL is not found within the timeout: "+ timeOut);
+        }
+        return null;
+    }
+
+    public String waitForURLIs(String url, int timeOut){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
+        try {
+            if(wait.until(ExpectedConditions.titleIs(url))){
+                return driver.getCurrentUrl();
+            }    
+        } catch (Exception e) {
+            System.out.println("URL is not found within the timeout: "+ timeOut);
+        }
+        return null;
+    }
+
+    public Alert waitForJSAlert(int timeOut){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
+        return wait.until(ExpectedConditions.alertIsPresent());
+    }
+
+    public String getAlertText(int timeOut){
+        return waitForJSAlert(timeOut).getText();
+     }
+
+    public void acceptAlert(int timeOut){
+        waitForJSAlert(timeOut).accept();
+     }
+
+    public void dismissAlert(int timeOut){
+        waitForJSAlert(timeOut).dismiss();
+     }
+
+    public void alertSendKeys(int timeOut, String value){
+        waitForJSAlert(timeOut).sendKeys(value);
+     }
+
+    public boolean waitForWindow(int totalNumberOfWindowsToBe, int timeOut){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
+        return wait.until(ExpectedConditions.numberOfWindowsToBe(totalNumberOfWindowsToBe));
     }
 }

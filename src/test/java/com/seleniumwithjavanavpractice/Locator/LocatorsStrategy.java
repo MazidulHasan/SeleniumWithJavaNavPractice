@@ -38,11 +38,11 @@ public class LocatorsStrategy {
         By header = By.tagName("h2");
 
         ElementUtil elementUtil = new ElementUtil(driver);
-        elementUtil.doSenKeys(firstName, "Fname");
-        elementUtil.doSenKeys(lastNmae, "LastName");
-        elementUtil.doSenKeys(email, "email");
-        elementUtil.doSenKeys(telephone, "telephone");
-        elementUtil.doSenKeys(passWord, "passWithCssSelector");
+        elementUtil.doSendKeys(firstName, "Fname");
+        elementUtil.doSendKeys(lastNmae, "LastName");
+        elementUtil.doSendKeys(email, "email");
+        elementUtil.doSendKeys(telephone, "telephone");
+        elementUtil.doSendKeys(passWord, "passWithCssSelector");
         elementUtil.doClick(linkText);
         elementUtil.doClick(partialLinkText);
         System.out.println(elementUtil.doGetElementText(header));

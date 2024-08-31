@@ -19,8 +19,8 @@ public class OpenCartLoginTest {
         By passBy = By.id("input-password");
 
         ElementUtil elementUtil = new ElementUtil(driver);
-        elementUtil.doSenKeys(emailBy, "test@gmai.com");
-        elementUtil.doSenKeys(passBy, "test123");
+        elementUtil.doSendKeys(emailBy, "test@gmai.com");
+        elementUtil.doSendKeys(passBy, "test123");
 
         // browserUtil.closeBrowser();
     }
