@@ -1,0 +1,13 @@
+Implicit wait:
+Explicit wait:
+    > Fluent wait 
+    > Webdriver wait
+
+Here webdriver wait comes from fluent wait. What ever we can do on fluent wait we can 
+do the same thing in webdriver wait. 
+So why they are different::
+> Fluent wait is a concept. We do not need to give any polingEvey duration/withTimeout
+etc. We can do it simply just defining it and use it.
+
+> Fluent wait is like a tool so that other external tool can implement 
+the functionality. It is like a template.

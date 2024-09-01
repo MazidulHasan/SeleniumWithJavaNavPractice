@@ -291,4 +291,19 @@ public class ElementUtil {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
         return wait.until(ExpectedConditions.numberOfWindowsToBe(totalNumberOfWindowsToBe));
     }
+
+    public void wairForFrameAdnSwitchToIt(By framelocator, int timeOut){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
+        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(framelocator));
+    }
+
+    public void wairForFrameAdnSwitchToIt(int frameIndex, int timeOut){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
+        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frameIndex));
+    }
+
+    public void wairForFrameAdnSwitchToIt(WebElement frameElement, int timeOut){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
+        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frameElement));
+    }
 }
