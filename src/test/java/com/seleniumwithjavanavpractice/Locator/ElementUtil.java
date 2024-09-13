@@ -6,15 +6,20 @@ import java.util.List;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ElementUtil {
     private WebDriver driver;         //private so that no one can access this and using it will get null pointer exception, so to prevent it we declare it as private
+    private final String DEFAULT_ELEMENT_TIMEOUT_MESSAGE = "Timeo out...Element was not found";
+    private final String DEFAULT_Alert_TIMEOUT_MESSAGE = "Timeo out...Alert was not found";
 
     public ElementUtil(WebDriver driver){
         this.driver = driver;
@@ -203,6 +208,15 @@ public class ElementUtil {
         return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
     }
 
+    public List<WebElement> waitForElementsPresenceWithFluentWait(By locator, int timeOut, int pollingTime){
+        Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+                                .withTimeout(Duration.ofSeconds(timeOut))
+                                .pollingEvery(Duration.ofSeconds(pollingTime))
+                                .ignoring(NoSuchElementException.class)
+                                .withMessage(DEFAULT_ELEMENT_TIMEOUT_MESSAGE);
+        return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
+    }
+
     public List<WebElement> waitForElementsVisibility(By locator, int timeOut){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
         return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
@@ -264,6 +278,15 @@ public class ElementUtil {
             System.out.println("URL is not found within the timeout: "+ timeOut);
         }
         return null;
+    }
+
+    public Alert waitForJSAlertPresenceWithFluentWait(By locator, int timeOut, int pollingTime){
+        Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+                                .withTimeout(Duration.ofSeconds(timeOut))
+                                .pollingEvery(Duration.ofSeconds(pollingTime))
+                                .ignoring(NoAlertPresentException.class)
+                                .withMessage(DEFAULT_Alert_TIMEOUT_MESSAGE);
+        return wait.until(ExpectedConditions.alertIsPresent());
     }
 
     public Alert waitForJSAlert(int timeOut){
