@@ -1,0 +1,20 @@
+testNG: Java based unit testing framework
+
+selenium + testNG
+(Browser) + (testing)
+
+> selenium will handel browser related work and testNG will handel testing related things
+> Genereates report-> HTML: Pass/fail
+                    -> XML
+> Organise of test cases
+> Can define Prequisite
+> can create test runner: testng.xml
+> Parallel run (Can not do this only with selenium)
+> Priority of test cases / ignore the test case
+> Invocation count
+> testNG Listeners : attach screenshot in the report, allure, extent report
+> Annotations: before steps, after steps
+> Data providers: test data
+> Parameters: env/config: URL, Browser Name
+> Maven lifecycle
+> Retry logic
