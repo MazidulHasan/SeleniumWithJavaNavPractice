@@ -10,6 +10,9 @@ public class PriorityTest {
     
     // we can give priority count only for @Test
 
+    // we should avoid prioritty as much as possible
+    // test cases should be independent to each other
+
     @Test(priority = 2)
     public void eTest(){
         System.out.println("e test");
