@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="TestNG Regression Suite" verbose="3">
-	<!-- thread-count="10" parallel="tests"> -->
+                break;
+<suite name="TestNG Regression Suite" verbose="3" thread-count="10" parallel="tests">
 
 
 	<test name="Google Test">
-		<!-- <parameter name="url" value="https://www.google.com" />
+		<parameter name="url" value="https://www.google.com" />
 		<parameter name="browser" value="chrome" />
-		<parameter name="headless" value="false" /> -->
+		<parameter name="headless" value="false" />
 
 
 		<classes>
